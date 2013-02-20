@@ -1,0 +1,32 @@
+%h4 You have 114 peoples.
+
+%ul#flits_list
+	- @friends.each do |friend|
+		%li{ :id => "#{friend.user_name}" }
+			= image_tag friend.gravatar_url
+			.flit_message_container
+				.flit_message_content
+					%h4= link_to friend.user_name, user_flits_path(friend.user_name)
+					- if friend.flits.length > 0
+						%span= friend.flits.last.message
+						.time_ago
+							= distance_of_time_in_words_to_now(friend.flits.last.created_at)
+							ago
+				.button_container
+					%input{ :type => "button", :name => "#{friend.user_name}", :class => "btn ajax_button", :value =>  "Stop Following" }
+			.clear
+
+:javascript
+	$(document).ready(function() {
+		$('.ajax_button').click(function() {
+			var friend_user_name = $(this).attr("name");
+			$.ajax({
+				type: "POST",
+				url: "/remove_friend/" + friend_user_name,
+				//data: { id: friend_user_name, user: friend_user_name },
+				success: function(msg) {
+					$('#'+ msg).slideUp('slow');
+				}
+			});
+		}); 
+	});

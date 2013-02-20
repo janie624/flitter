@@ -1,0 +1,10 @@
+%ul#flits_list
+	- flits.each do |flit|
+		%li
+			= image_tag flit.user.gravatar_url
+			.flit_message_container
+				= link_to flit.user.user_name, user_flits_path(flit.user.user_name)
+				%span= flit.message
+				.time_ago
+					= distance_of_time_in_words_to_now(flit.created_at)
+			.clear

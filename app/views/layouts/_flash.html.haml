@@ -1,0 +1,8 @@
+.content
+  - unless flash.blank?
+    - flash.each do |name, msg|
+      .alert= msg
+  - if notice
+    %p.alert= notice
+  - if alert
+    %p.alert= alert

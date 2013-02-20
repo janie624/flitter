@@ -1,0 +1,165 @@
+// Place all the styles related to the Flits controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#new_flit_form {
+	width: 521px;
+	margin-bottom: 25px;
+
+	h3 {
+
+		&#char_count {
+			float:right; 
+			color: #aaa;
+		}
+
+		&.dark_red {
+			color: #5C0002 !important;
+		}
+
+		&.red {
+			color: #D40D12 !important;
+		}
+	}
+
+	textarea {
+		width: 510px; 
+	}
+
+	#lastest_message {
+		color: #666;
+		font-size: 90%;
+		float: left;
+		width: 360px;
+	}
+
+	#submit_button_container {
+		float: right;
+		width: 160px;
+		text-align: right;
+	}
+}
+
+/* FlitS LIST */
+#flits_list {
+	margin: 0;
+	padding: 0px;
+	width: 521px;
+
+	h3, h4 {
+		margin-top: 0;
+	}
+
+	li {
+		list-style: none;
+	 	padding: 10px 0;
+	 	background-color: white;
+	 	border-bottom: 1px dashed #D2DADA;
+
+	 	&:first-of-type {
+	 		border-top: 1px solid #D2DADA;
+	 	}
+
+	 	&:hover {
+	 		background-color: #F7F7F7;
+	 	}
+
+	  img {
+	  	float: left;
+	 		margin-left: 10px;  	
+	  }
+
+	 	.flit_message_container {
+	 		float: left;
+	 		margin-left: 10px;
+	 		width: 450px;
+	 	}
+
+	 	.time_ago {
+	 		color: #9C9C9C;
+	 		font-size: 90%;
+	 		padding-top: 3px;
+	 	}
+
+	 	a {
+	 		color: #2276bb;
+	 		text-decoration: none;
+	 	}
+
+	 	.flit_message_content {
+	 		width: 320px;
+	 		float: left;
+	 	}
+
+		.button_container {
+			width: 120px;
+			float: right;
+			text-align: right;
+		}
+	}
+}
+
+#my_infor_container {
+	img {
+		float: left;
+	}
+
+	.contents {
+		font-weight: bold;	
+		padding-left: 10px;
+		float: left; 
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
+#side_container {
+	margin-top: 15px;
+
+	h5 {
+		margin: 2px 0;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
+#search_bar {
+	height: 24px;
+	width: 165px;
+	margin-top: 15px;
+	border: 1px solid #999999;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font-size: 16px;
+	line-height: 22px;
+	padding: 0;
+
+	input.text {
+		width: 130px;
+		height: 16px;
+		border: none;
+		float: left;
+		background-color: transparent;
+	}
+
+	#search_submit_button{
+		background-image: url("find.png");
+		background-repeat: no-repeat;
+		margin: 1px 1px auto;
+		border-left: 1px solid #999;
+		width: 20px;
+		height: 22px;
+		float: right;
+
+		&:hover {
+			background-position: 0 -22px;
+			cursor: pointer;
+		}
+	}
+}

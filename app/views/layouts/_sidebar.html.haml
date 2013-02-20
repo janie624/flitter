@@ -1,0 +1,23 @@
+- if current_user
+	#my_infor_container
+		= link_to image_tag(current_user.gravatar_url(:size => 30)), user_flits_path(current_user.user_name)
+		.contents
+			= link_to current_user.user_name, user_flits_path(current_user.user_name)
+			= pluralize(current_user.flits.length, "Flit")
+	.clear
+
+	#side_container
+		%h5= link_to pluralize(current_user.friends.count, "following"), following_path
+		%h5= pluralize(current_user.friends_of.count, "follower")
+
+	= form_tag  search_path do
+		#search_bar
+			= text_field_tag :q, @q, :class => "text"
+			#search_submit_button{ :onclick => "javascript:$(this).closest('form').submit();" }
+
+	#side_container
+		%h4 Followers
+		- current_user.friends_of.each do |friend|
+			= link_to image_tag(friend.gravatar_url(:size => 30), :border => 0, :title => friend.user_name), user_flits_path(friend.user_name)
+
+

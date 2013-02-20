@@ -1,0 +1,39 @@
+%h4 You have 114 peoples.
+
+%ul#flits_list
+	- @users.each do |user|
+		%li{ :id => "#{user.user_name}" }
+			= image_tag user.gravatar_url
+			.flit_message_container
+				.flit_message_content
+					%h4= link_to user.user_name, user_flits_path(user.user_name)
+					- if user.flits.length > 0
+						%span= user.flits.last.message
+						.time_ago
+							= distance_of_time_in_words_to_now(user.flits.last.created_at)
+							ago
+				.button_container
+					- if current_user.is_friend? user
+						%input.btn.ajax_button{ :name => "#{user.user_name}", :type => "button", :value => "Stop Following", :id => "btn_#{user.user_name}" }
+					- else 
+						%input.btn.ajax_button{ :name => "#{user.user_name}", :type => "button", :value => "Follow", :id => "btn_#{user.user_name}" }
+			.clear
+
+:javascript
+	$(document).ready(function() {
+		$('.ajax_button').click(function() {
+			var user_name = $(this).attr("name");
+			$.ajax({
+				type: "POST",
+				url: "/" + user_name + "/toggle_follow_via_ajax/",
+				success: function(msg) {
+					elm = $('#btn_' + msg);
+					if (elm.attr('value') == "Stop Following") {
+						elm.val("Follow");
+					} else {
+						elm.val("Stop Following");
+					}
+				}
+			});
+		}); 
+	});
